@@ -1,5 +1,6 @@
 package com.sparkkees.pk.product_service.service;
 
+import com.sparkkees.pk.product_service.dto.ProductDTO;
 import com.sparkkees.pk.product_service.model.Product;
 import com.sparkkees.pk.product_service.repositories.ProductRepository;
 import org.springframework.cache.annotation.CacheEvict;
@@ -13,6 +14,16 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    public Product createProduct(ProductDTO productDTO) {
+        Product product = new Product();
+        product.setName(productDTO.getName());
+        product.setDescription(productDTO.getDescription());
+        product.setPrice(productDTO.getPrice());
+        product.setStock(productDTO.getStock());
+        Product createdProduct = productRepository.save(product);
+        return createdProduct;
     }
 
     @Cacheable(value = "products", key = "#id")
