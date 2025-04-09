@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 public class ClickHouseConnection {
 
     public void openConnection(){
-        // Database URL (Replace with your ClickHouse instance details)
+        //TODO: Database URL (Replace with your ClickHouse instance details)
+        // Use properties for the credentials
         String url = "jdbc:ch://localhost:8123/default"; // Default database: "default"
         String user = "default";  // Default ClickHouse user
         String password = "";     // No password by default

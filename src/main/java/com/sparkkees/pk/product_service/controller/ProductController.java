@@ -28,4 +28,10 @@ public class ProductController {
         URI uri = URI.create("/products/" + product.getId());
         return ResponseEntity.created(uri).build();
     }
+
+    @PatchMapping("/update")
+    public ResponseEntity<Void> updateProduct(@RequestBody ProductDTO productDTO) {
+        productService.updateProduct(productDTO.getId(), productDTO);
+        return ResponseEntity.ok().build();
+    }
 }
